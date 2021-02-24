@@ -21,12 +21,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
     longitude = location.longitude;
     NetworkHelper netwokHelper  = NetworkHelper('https://api.openweathermap.org/data/2.5/weather?lat=$lattitude&lon=$longitude&appid=$apiKey');
     var weatherData = await netwokHelper.getData();
-
-  }
-
-  Future<void> getData() async {
-
-
   }
 
   @override
