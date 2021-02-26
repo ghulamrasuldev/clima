@@ -21,13 +21,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
     lattitude = location.lattitude;
     longitude = location.longitude;
     NetworkHelper netwokHelper = NetworkHelper(
-        'https://api.openweathermap.org/data/2.5/weather?lat=$lattitude&lon=$longitude&appid=$apiKey');
+        'https://api.openweathermap.org/data/2.5/weather?lat=$lattitude&lon=$longitude&appid=$apiKey&units=metric');
     var weatherData = await netwokHelper.getData();
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) {
-          return LocationScreen();
+          return LocationScreen(locationWeather: weatherData,);
         },
       ),
     );
