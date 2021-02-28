@@ -8,12 +8,10 @@ class LocationScreen extends StatefulWidget {
   @override
   _LocationScreenState createState() => _LocationScreenState();
 }
-
 class _LocationScreenState extends State<LocationScreen> {
   int temperature;
   int condition;
   String cityName;
-
   @override
   void initState() {
     // TODO: implement initState
@@ -22,7 +20,7 @@ class _LocationScreenState extends State<LocationScreen> {
 
   }
   void UpdateUI(dynamic weatherData){
-    double temp = weatherData['main']['temp'];
+    dynamic temp = weatherData['main']['temp'];
     temperature = temp.toInt();
     condition = weatherData['weather'][0]['id'];
     cityName = weatherData['name'];
@@ -50,7 +48,13 @@ class _LocationScreenState extends State<LocationScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   FlatButton(
-                    onPressed: () {},
+                    onPressed: () async{
+                      var weatherData = await model.getLocationWeather();
+                      setState((){
+                        UpdateUI(weatherData);
+                      });
+
+                    },
                     child: Icon(
                       Icons.near_me,
                       size: 50.0,
@@ -83,7 +87,7 @@ class _LocationScreenState extends State<LocationScreen> {
               Padding(
                 padding: EdgeInsets.only(right: 15.0),
                 child: Text(
-                  model.getMessage(temperature),
+                  '${model.getMessage(temperature)} in $cityName',
                   textAlign: TextAlign.right,
                   style: kMessageTextStyle,
                 ),
