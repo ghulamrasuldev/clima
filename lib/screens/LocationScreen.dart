@@ -76,8 +76,11 @@ class _LocationScreenState extends State<LocationScreen> {
                           },
                         ),
                       );
-                      var weatherData = await model.getCityWeather(typedName);
-                      UpdateUI(weatherData);
+                      if (typedName!=null){
+                        var weatherData = await model.getCityWeather(typedName);
+                        UpdateUI(weatherData);
+                      }
+
                     },
                     child: Icon(
                       Icons.location_city,
