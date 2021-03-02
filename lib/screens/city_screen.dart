@@ -26,7 +26,7 @@ class _CityScreenState extends State<CityScreen> {
                 alignment: Alignment.topLeft,
                 child: FlatButton(
                   onPressed: () {
-                    Navigator.pop(context,cityName);
+                    Navigator.pop(context);
                   },
                   child: Icon(
                     Icons.arrow_back_ios,
